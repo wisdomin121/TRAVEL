@@ -4,8 +4,23 @@ body {
 a {
   color: #00B7FF; }
 
-nav {
+.header nav{
   background-color: #c9e9ff;
 }
 
+.navbar-brand{
+  color: white;
+}
+
+.nav-link{
+  color: white;
+}
+
+.jumbotron{
+  background-color: #c9e9ff;
+}
+
+.jumbotron-heading{
+  color: white;
+}
 /*# sourceMappingURL=style.css.map */
