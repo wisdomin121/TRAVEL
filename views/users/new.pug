@@ -2,10 +2,13 @@ extends ../layout
 
 block content
 
-  div
-    h4 회원가입 
+  div.signup-entire
+    br
+    div.signup-title.text-center
+      h4 
+        strong 회원가입 
 
-    div
+    div.signup-form
       form
         div
           label(for="name") 이름
@@ -21,4 +24,5 @@ block content
           input.form-control(type="password" placeholder="비밀번호 확인")
         
         br
-        button.btn.btn-primary(type="submit") SIGNUP
+        div.signup-button
+          button.btn.btn-primary(type="submit") SIGNUP
