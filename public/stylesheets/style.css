@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Nanum+Gothic|Raleway|Roboto&display=swap");
+
 a {
   color: #00B7FF; }
 
@@ -41,4 +43,5 @@ section div .form-control{
   font-size: 0.9rem;
   opacity: 0.7;
 }
+
 /*# sourceMappingURL=style.css.map */

@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css?family=Nanum+Gothic|Raleway|Roboto&display=swap");
+
+a {
+  color: #00B7FF; }
+
+.header nav{
+  background-color: #c9e9ff;
+}
+
+.header .down-nav{
+  background-color: #c9e9ff;
+  border-bottom: 1px solid lightgray;
+}
+
+.navbar-brand{
+  color: white;
+}
+
+.nav-link{
+  color: white;
+}
+
+.jumbotron{
+  background-color: #c9e9ff;
+}
+
+.jumbotron-heading{
+  color: white;
+}
+
+.header .down-nav li{
+  list-style: none;
+}
+
+.header .down-nav li a{
+  color: white;
+}
+
+section div .form-control{
+  color: #5e5e5e;
+  width: 50%;
+  text-align: center;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
