@@ -4,7 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware');
-var mongoose   = require('mongoose');
+var mongoose = require('mongoose');
+var flash = require('connect-flash');
+var session = require('express-session');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -14,6 +16,9 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+
+app.locals.moment = require('moment');
+app.locals.querystring = require('querystring');
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb+srv://Ming_D:alswl1210@cluster0-tts2y.mongodb.net/test?retryWrites=true&w=majority', {
@@ -33,7 +38,22 @@ app.use(sassMiddleware({
   indentedSyntax: true, // true = .sass and false = .scss
   sourceMap: true
 }));
+
+app.use(session({
+  resave: true,
+  saveUninitialized: true,
+  secret: 'long-long-long-secret-string-1313513tefgwdsvbjkvasd'
+}));
+
+app.use(flash());
+
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(function(req, res, next) {
+  res.locals.currentUser = req.session.user;
+  res.locals.flashMessages = req.flash();
+  next();
+});
 
 app.use('/', index);
 app.use('/users', users);

@@ -1,27 +1,26 @@
 extends ../layout
 
 block content
-
-  div.signup-entire
+  div.container
     br
     div.signup-title.text-center
       h4 
         strong 회원가입 
 
     div.signup-form
-      form
-        div
+      form(action="/users", method="POST")
+        div.form-group
           label(for="name") 이름
-          input.form-control(type="text" placeholder="이름")
-        div
+          input.form-control(type="text", id="name", name="name" placeholder="이름")
+        div.form-group
           label(for="id") 아이디
-          input.form-control(type="text" placeholder="아이디")
-        div
-          label(for="pwd") 비밀번호
-          input.form-control(type="password" placeholder="비밀번호")
-        div
+          input.form-control(type="text", id="id", name="id", placeholder="아이디")
+        div.form-group
+          label(for="password") 비밀번호
+          input.form-control(type="password", id="password", name="password", placeholder="비밀번호")
+        div.form-group
           label(for="check_pwd") 비밀번호 확인
-          input.form-control(type="password" placeholder="비밀번호 확인")
+          input.form-control(type="password", id="check_pwd", name="check_pwd", placeholder="비밀번호 확인")
         
         br
         div.signup-button

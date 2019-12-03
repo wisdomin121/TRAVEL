@@ -3,6 +3,10 @@
 a {
   color: #00B7FF; }
 
+.flashMessages{
+  background-color: #c9e9ff;
+}
+
 .header nav{
   background-color: #c9e9ff;
 }
