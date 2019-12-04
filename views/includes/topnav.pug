@@ -17,11 +17,21 @@
                 strong 회원가입
           else
             li.nav-item
-              a.nav-link(href="/signout") 
-                strong 로그아웃
+              a.nav-link(href="#") 
+                strong 위시리스트
             li.nav-item
               a.nav-link(href="#") 
-                strong 마이페이지
+                strong 예약 내역
+
+            li.nav-item
+              div.btn-group
+                button.btn.btn-secondary(data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                  img(src="images/profile.png")
+                div.dropdown-menu.dropdown-menu-right(aria-labelledby="dropdownMenu2")
+                  a.nav-link.dropdown-item(href=`/users/${currentUser._id}`)
+                    strong 마이페이지
+                  a.nav-link.dropdown-item(href="/signout")
+                    strong 로그아웃
   div.down-nav
     ul
       li

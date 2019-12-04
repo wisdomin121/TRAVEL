@@ -1,0 +1,31 @@
+extends ../layout
+
+block content
+  div.container
+    br
+    div.user-page-title.text-center
+      h4 
+        strong 프로필 관리
+        
+    div.user-page-form
+      div.form-group
+        strong 이름: #{user.name}
+      div.form-group
+        strong 아이디: #{user.id}
+      div.form-group
+        strong 비밀번호: ********
+
+      div.form-group
+        u
+          a.guide-signup(href="#") 가이드 등록하기
+    br
+    div.user-page-btn
+      button.btn.btn-lg.btn-primary  
+        strong 수정
+      button.btn.btn-secondary.btn-lg 
+        strong 회원탈퇴
+
+
+//-       <button type="button" class="btn btn-lg btn-primary" disabled>Primary button</button>
+//- <button type="button" class="btn btn-secondary btn-lg" disabled>Button</button>
+

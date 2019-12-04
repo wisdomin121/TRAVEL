@@ -64,11 +64,23 @@ section div .form-control{
   margin: 0 auto;
 }
 
+.user-page-form{
+  border:2px solid #c9e9ff;
+  border-radius: 15px;
+  max-width: 600px;
+  padding: 2%;
+  margin: 0 auto;
+}
+
 .signup-title{
   color: #c9e9ff;
 }
 
 .signin-title{
+  color: #c9e9ff;
+}
+
+.user-page-title{
   color: #c9e9ff;
 }
 
@@ -91,5 +103,49 @@ section div .form-control{
   margin: 0 auto;
   text-align: center;
 }
+
+.nav-item img{
+  width: 30px;
+  height: 30px;
+}
+
+.nav-item .btn-secondary{
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+.nav-item .dropdown-item{
+  color: #c9e9ff;
+}
+
+.guide-signup{
+  text-align: center;
+  color: #5e5e5e;
+}
+
+.user-page-form .form-group{
+  color: #5e5e5e;
+  text-align: center;
+}
+
+.user-page-btn{
+  margin: 0 auto;
+  text-align: center;
+}
+
+.user-page-btn .btn-primary{
+  background-color: #c9e9ff !important;
+  border-color: transparent !important;
+  margin-right: 10px;
+  max-height: 40px;
+}
+
+.user-page-btn .btn-secondary{
+  background-color: #e0e0e0 !important;
+  border-color: transparent !important;
+  max-height: 40px;
+}
+
+
 
 /*# sourceMappingURL=style.css.map */

@@ -28,12 +28,21 @@ function validateForm(form, options) {
 }
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
-
 router.get('/new', function(req, res, next) {
   res.render('users/new');
+});
+
+router.get('/user_page', function(req, res, next){
+  res.render('users/user_page');
+});
+
+router.get('/:id', (req, res, next) => {
+  User.findById(req.params.id, function(err, user) {
+    if (err) {
+      return next(err);
+    }
+    res.render('users/user_page', {user: user});
+  });
 });
 
 router.post('/', (req, res, next) => {
