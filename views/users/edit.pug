@@ -1,0 +1,38 @@
+extends ../layout
+
+block content
+  div.container
+    br
+    div.user-edit-title.text-center
+      h4 
+        strong 프로필 관리
+    
+    form(action=`/users/edit/${user._id}`, method='POST')
+      div.user-edit-form
+        div.form-group.name
+          label(for="name") 
+            strong 이름 
+          input.form-control(type='text', id='name', name='name', placeholder='Your name', value=user.name)
+        div.form-group
+          label(for='id') 
+            strong 아이디
+          input.form-control(type="text", id="id", name="id", placeholder='Your id', value=user.id)
+        div.form-group
+          label(for='current_password') 
+            strong 현재 비밀번호
+          input.form-control(type='password', id='current_password', name='current_password', placeholder='현재 비밀번호 입력')
+        div.form-group
+          label(for='password') 
+            strong 비밀번호
+          input.form-control(type='password', id='password', name='password', placeholder='새 비밀번호 입력')
+        div.form-group
+          label(for="check_pwd") 
+            strong 비밀번호 확인
+          input.form-control(type="password", id="check_pwd", name="check_pwd", placeholder="새 비밀번호 재입력")
+
+      br
+      div.user-page-btn
+        button.btn.btn-lg.btn-primary(type="submit")
+          strong 저장
+        a.btn.btn-secondary.btn-lg(href='javascript:window.history.back();')
+          strong 취소

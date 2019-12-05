@@ -17,15 +17,13 @@ block content
 
       div.form-group
         u
-          a.guide-signup(href="#") 가이드 등록하기
+          a.guide-signup(href="#") 
+            strong 가이드 등록하기
     br
     div.user-page-btn
-      button.btn.btn-lg.btn-primary  
+      a.btn.btn-lg.btn-primary(href=`/users/${user._id}/edit`)
         strong 수정
-      button.btn.btn-secondary.btn-lg 
+      a.btn.btn-secondary.btn-lg(href=`/users/${user._id}?_method=DELETE`)
         strong 회원탈퇴
 
-
-//-       <button type="button" class="btn btn-lg btn-primary" disabled>Primary button</button>
-//- <button type="button" class="btn btn-secondary btn-lg" disabled>Button</button>
 

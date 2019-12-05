@@ -7,6 +7,7 @@ var sassMiddleware = require('node-sass-middleware');
 var mongoose = require('mongoose');
 var flash = require('connect-flash');
 var session = require('express-session');
+var methodOverride = require('method-override');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -31,6 +32,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+app.use(methodOverride('_method', {methods: ['POST', 'GET']}));
 
 app.use(sassMiddleware({
   src: path.join(__dirname, 'public'),
