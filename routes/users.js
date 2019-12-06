@@ -55,6 +55,65 @@ router.get('/user_page', function(req, res, next){
   res.render('users/user_page');
 });
 
+router.get('/signup_guide/:id', function(req, res, next){
+  User.findById(req.params.id, function(err, user) {
+    if (err) {
+      return next(err);
+    }
+    res.render('users/signup_guide', {user: user});
+  });
+});
+
+router.get('/:id', (req, res, next) => {
+  User.findById(req.params.id, function(err, user) {
+    if (err) {
+      return next(err);
+    }
+    res.render('users/user_page', {user: user});
+  });
+});
+
+router.delete('/:id', function(req, res, next){
+  __id = req.params.id;
+  delete req.session.user;
+  User.findOneAndRemove({_id: __id}, function(err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect('/');
+  });
+});
+
+router.post('/', (req, res, next) => {
+  var err = validateForm(req.body, {needPassword: true});
+  if (err) {
+    req.flash('danger', err);
+    return res.redirect('back');
+  }
+  User.findOne({id: req.body.id}, function(err, user) {
+    if (err) {
+      return next(err);
+    }
+    if (user) {
+      req.flash('danger', 'ID already exists.');
+      return res.redirect('back');
+    }
+    var newUser = new User({
+      id: req.body.id,
+      name: req.body.name,
+    });
+    newUser.password = req.body.password;
+
+    newUser.save(function(err) {
+      if (err) {
+        return next(err);
+      } else {
+        res.redirect('/');
+      }
+    });
+  });
+});
+
 router.post('/edit/:id', catchErrors(async (req, res, next) => {
   const user = await User.findById(req.params.id);
 
@@ -97,55 +156,21 @@ router.post('/edit_pwd/:id', catchErrors(async (req, res, next) => {
 
 }));
 
-router.delete('/:id', function(req, res, next){
-  __id = req.params.id;
-  delete req.session.user;
-  User.findOneAndRemove({_id: __id}, function(err) {
-    if (err) {
-      return next(err);
-    }
-    res.redirect('/');
-  });
-});
+router.post('/signup_guide/:id', catchErrors(async (req, res, next) => {
+  const user = await User.findById(req.params.id);
 
-router.get('/:id', (req, res, next) => {
-  User.findById(req.params.id, function(err, user) {
-    if (err) {
-      return next(err);
-    }
-    res.render('users/user_page', {user: user});
-  });
-});
-
-router.post('/', (req, res, next) => {
-  var err = validateForm(req.body, {needPassword: true});
-  if (err) {
-    req.flash('danger', err);
+  if(!user){
+    req.flash('danger', 'Not exist user');
     return res.redirect('back');
   }
-  User.findOne({id: req.body.id}, function(err, user) {
-    if (err) {
-      return next(err);
-    }
-    if (user) {
-      req.flash('danger', 'ID already exists.');
-      return res.redirect('back');
-    }
-    var newUser = new User({
-      id: req.body.id,
-      name: req.body.name,
-    });
-    newUser.password = req.body.password;
 
-    newUser.save(function(err) {
-      if (err) {
-        return next(err);
-      } else {
-        res.redirect('/');
-      }
-    });
-  });
-});
+  user.intro = req.body.intro;
+  user.group = 2;
+
+  await user.save();
+  res.redirect('/');
+
+}));
 
 
 module.exports = router;

@@ -88,6 +88,14 @@ section div .form-control{
   margin: 0 auto;
 }
 
+.signup-guide-form .form-group{
+  border:2px solid #c9e9ff;
+  border-radius: 15px;
+  max-width: 600px;
+  padding: 2%;
+  margin: 0 auto;
+}
+
 .signup-title{
   color: #c9e9ff;
 }
@@ -108,6 +116,10 @@ section div .form-control{
   color: #c9e9ff;
 }
 
+.signup-guide-title{
+  color: #c9e9ff;
+}
+
 .signup-form button{
   background-color: #c9e9ff;
   border-color: #c9e9ff;
@@ -118,12 +130,22 @@ section div .form-control{
   border-color: #c9e9ff;
 }
 
+.signup-guide-form button{
+  background-color: #c9e9ff;
+  border-color: #c9e9ff;
+}
+
 .signup-button{
   margin: 0 auto;
   text-align: center;
 }
 
 .signin-button{
+  margin: 0 auto;
+  text-align: center;
+}
+
+.signup-guide-button{
   margin: 0 auto;
   text-align: center;
 }

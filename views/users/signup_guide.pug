@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+  div.container
+    br
+    div.signup-guide-title.text-center
+      h4 
+        strong 가이드 등록하기
+
+    div.signup-guide-form
+      form(action=`/users/signup_guide/${user._id}`, method="POST")
+        div.form-group
+          label(for="intro") 소개
+          textarea.form-control(row="100", col="100", id="intro", name="intro" placeholder="거주하게 된 배경, 파트너 활동의 계기, 직업 등 여행자에게 파트너님을 소개해주세요.")
+        
+        br
+        div.signup-guide-button
+          button.btn.btn-primary(type="submit") 등록하기

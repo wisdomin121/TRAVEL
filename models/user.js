@@ -6,6 +6,7 @@ var schema = new Schema({
   name: {type: String, required: true, trim: true},
   password: {type: String},
   group: {type: Number, default: 1},
+  intro: {type: String, required: false},
   createdAt: {type: Date, default: Date.now}
 }, { 
   toJSON: { virtuals: true},

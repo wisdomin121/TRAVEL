@@ -15,10 +15,17 @@ block content
       div.form-group
         strong 비밀번호: ********
 
-      div.form-group
-        u
-          a.guide-signup(href="#") 
-            strong 가이드 등록하기
+      if(user.group == 1)
+        div.form-group
+          u
+            a.guide-signup(href=`/users/signup_guide/${user._id}`) 
+              strong 가이드 등록하기
+      if(user.group == 2)
+        div.form-group
+          a.guide-home(href="#")
+            strong 가이드 블로그 가기
+
+      
     br
     div.user-page-btn
       a.btn.btn-lg.btn-primary(href=`/users/${user._id}/edit`)
