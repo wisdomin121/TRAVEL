@@ -1,6 +1,7 @@
 var express = require('express');
     User = require('../models/user')
 var router = express.Router();
+const catchErrors = require('../lib/async-error');
 
 function validateForm(form, options) {
   var id = form.id || "";
@@ -41,45 +42,60 @@ router.get('/:id/edit', function(req, res, next){
   });
 });
 
+router.get('/:id/edit_pwd', function(req, res, next){
+  User.findById(req.params.id, function(err, user) {
+    if (err) {
+      return next(err);
+    }
+    res.render('users/edit_pwd', {user: user});
+  });
+});
+
 router.get('/user_page', function(req, res, next){
   res.render('users/user_page');
 });
 
-router.post('/edit/:id', function(req, res, next) {
-  var err = validateForm(req.body);
-  if (err) {
-    req.flash('danger', err);
+router.post('/edit/:id', catchErrors(async (req, res, next) => {
+  const user = await User.findById(req.params.id);
+
+  if(!user){
+    req.flash('danger', 'Not exist user');
     return res.redirect('back');
   }
 
-  User.findById({_id: req.params.id}, function(err, user) {
+  user.name = req.body.name;
+  user.id = req.body.id;
+
+  await user.save();
+  res.redirect('/');
+
+}));
+
+router.post('/edit_pwd/:id', catchErrors(async (req, res, next) => {
+  const user = await User.findById(req.params.id)
+
+  if (!user) {
+    req.flash('danger', 'Not exist user.');
+    return res.redirect('back');
+  }
+
+  if (user.password !== req.body.current_password) {
+    req.flash('danger', 'Password is incorrect');
+    return res.redirect('back');
+  }
+
+  if (req.body.password) {
+    user.password = req.body.password;
+  }
+
+  user.save(function(err) {
     if (err) {
       return next(err);
     }
-    if (!user) {
-      req.flash('danger', 'Not exist user.');
-      return res.redirect('back');
-    }
-
-    if (user.password !== req.body.current_password) {
-      req.flash('danger', 'Password is incorrect');
-      return res.redirect('back');
-    }
-
-    user.name = req.body.name;
-    user.id = req.body.id;
-    if (req.body.password) {
-      user.password = req.body.password;
-    }
-
-    user.save(function(err) {
-      if (err) {
-        return next(err);
-      }
-      res.redirect('/');
-    });
+    res.redirect('/');
   });
-});
+
+}));
 
 router.delete('/:id', function(req, res, next){
   __id = req.params.id;

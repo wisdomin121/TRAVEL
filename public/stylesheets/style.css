@@ -80,6 +80,14 @@ section div .form-control{
   margin: 0 auto;
 }
 
+.user-edit-pwd-form{
+  border:2px solid #c9e9ff;
+  border-radius: 15px;
+  max-width: 450px;
+  padding: 2%;
+  margin: 0 auto;
+}
+
 .signup-title{
   color: #c9e9ff;
 }
@@ -93,6 +101,10 @@ section div .form-control{
 }
 
 .user-edit-title{
+  color: #c9e9ff;
+}
+
+.user-edit-pwd-title{
   color: #c9e9ff;
 }
 
