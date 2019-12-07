@@ -1,0 +1,27 @@
+extends ../layout
+
+block content
+  if items.total > 0
+    .small Total #{items.total} items(s)
+
+  if items.total <= 0
+    .alert.alert-info No posts 
+  else
+    .items
+      .container
+        .row  
+          .col-md-4
+            each item in items.docs
+              .card.mb-4.shadow-sm
+                svg.bd-placeholder-img.card-img-top(width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail")
+                  title Placeholder
+                  rect(width="100%" height="100%" fill="#55595c")
+                  text(x="50%" y="50%" fill="#eceeef" dy=".3em") 사진
+                .card-body
+                  a.card-text.item_title(href="#")= item.title 
+                  .d-flex.justify-content-between.align-items-center
+                    .btn-group
+                      button.btn.btn-sm.btn-outline-secondary View
+                      button.btn.btn-sm.btn-outline-secondary Edit
+                    small.text-muted 9 mins
+

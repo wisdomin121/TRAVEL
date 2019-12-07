@@ -1,0 +1,36 @@
+extends ../layout
+
+block content
+  div.container
+    br
+    div.registration-title.text-center
+      h4 
+        strong 상품등록창
+
+    div.registration-form
+      form(action="/items", method="POST")
+        div.form-group
+          label(for="title") 제목
+          input.form-control(type="text", id="title", name="title" )
+        div.form-group
+          label(for="price") 1인당 가격
+          input.form-control(type="text", id="price", name="price")
+        div.form-group
+          label(for="max_num") 최대인원
+          input.form-control(type="text", id="max-num", name="max_num")
+        div.form-group
+          label(for="d_date") 출발 날짜
+          input.form-control(type="date", id="d_date", name="d_date", max="9999-12-31")
+        div.form-group
+          label(for="a_date") 도착 날짜
+          input.form-control(type="date", id="a_date", name="a_date", max="9999-12-31")
+        div.form-group
+          label(for="i_info") 상품정보글
+          input.form-control(type="textarea", id="i_info", name="i_info")
+        div.form-group
+          label(for="c_info") 코스정보글
+          input.form-control(type="textarea", id="c_info", name="c_info")
+        
+        br
+        div.registration-button
+          button.btn.btn-primary(type="submit") 등록하기
