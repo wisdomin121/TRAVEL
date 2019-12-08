@@ -1,6 +1,9 @@
 extends ../layout
 
 block content
+  h3
+    strong 여행 상품
+
   if items.total > 0
     .small Total #{items.total} items(s)
 
@@ -18,10 +21,9 @@ block content
                   rect(width="100%" height="100%" fill="#55595c")
                   text(x="50%" y="50%" fill="#eceeef" dy=".3em") 사진
                 .card-body
-                  a.card-text.item_title(href="#")= item.title 
+                  a.card-text.item_title(href=`/items/${item.id}`)= item.title 
                   .d-flex.justify-content-between.align-items-center
-                    .btn-group
-                      button.btn.btn-sm.btn-outline-secondary View
-                      button.btn.btn-sm.btn-outline-secondary Edit
+                    .price
+                      |가격 : #{item.price}
                     small.text-muted 9 mins
 

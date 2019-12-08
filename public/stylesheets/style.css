@@ -196,7 +196,45 @@ section div .form-control{
   max-height: 40px;
 }
 
+/*상품등록창*/
+.registration-title {
+  color: #c9e9ff;
+}
 
+.registration-form {
+  border:2px solid #c9e9ff;
+  border-radius: 15px;
+  max-width: 1000px;
+  padding: 2%;
+  margin: 0 auto;
+}
 
+.registration-form .form-group .ta{
+  height: 300px !important;
+}
+
+.registration-form .form-group .form-control {
+  height: 30px;
+  width: 100% !important;
+}
+
+.registration-btn{
+  margin: 0 auto;
+  text-align: center;
+}
+
+.registration-btn .btn-primary{
+  background-color: #c9e9ff !important;
+  border-color: transparent !important;
+  margin-right: 10px;
+  max-height: 40px;
+}
+
+.registration-form .edit{
+  float: right;
+  margin-right: 10px;
+  background-color: #c9e9ff !important;
+  border-color: transparent !important;
+}
 
 /*# sourceMappingURL=style.css.map */
