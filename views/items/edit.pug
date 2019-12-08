@@ -37,4 +37,7 @@ block content
         
         br
         div.registration-btn
-          button.btn.btn-primary(type="submit") 등록하기
+          button.btn.btn-primary(type="submit")
+            strong 등록하기
+          a.btn.btn-primary(href=`/items/${item.id}?_method=DELETE`)
+            strong 삭제하기

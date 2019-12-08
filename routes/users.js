@@ -74,9 +74,8 @@ router.get('/:id', (req, res, next) => {
 });
 
 router.delete('/:id', function(req, res, next){
-  __id = req.params.id;
   delete req.session.user;
-  User.findOneAndRemove({_id: __id}, function(err) {
+  User.findOneAndRemove({id: req.params.id}, function(err) {
     if (err) {
       return next(err);
     }

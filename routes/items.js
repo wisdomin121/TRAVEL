@@ -44,6 +44,16 @@ router.get('/:id/edit', catchErrors(async (req, res, next) =>{
   res.render('items/edit', {item: item});
 }));
 
+router.delete('/:id', function(req, res, next){
+  __id = req.params.id;
+  Item.findOneAndRemove({_id: __id}, function(err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect('/items');
+  });
+});
+
 router.post('/', catchErrors(async(req, res, next) => {
   const user = req.session.user; 
 
