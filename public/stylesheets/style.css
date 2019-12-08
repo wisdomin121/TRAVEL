@@ -251,6 +251,7 @@ section div .form-control{
   max-width: 960px;
 }
 
+.registration-edit-btn,
 .reserve-btn{
   background-color: #c9e9ff !important;
   border-color: transparent !important;

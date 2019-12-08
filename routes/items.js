@@ -38,6 +38,12 @@ router.get('/:id', catchErrors(async (req, res, next) => {
   res.render('items/show', {item: item});
 }));
 
+router.get('/:id/edit', catchErrors(async (req, res, next) =>{
+  const item = await Item.findById(req.params.id).populate('guide');
+  await item.save();
+  res.render('items/edit', {item: item});
+}));
+
 router.post('/', catchErrors(async(req, res, next) => {
   const user = req.session.user; 
 
@@ -49,12 +55,33 @@ router.post('/', catchErrors(async(req, res, next) => {
     i_info: req.body.i_info,
     c_info: req.body.c_info,
     d_date: req.body.d_date,
-    a_date: req.body.a_date
+    a_date: req.body.a_date,
+    c_info_length: req.body.c_info.length
   });
 
   await item.save();
   req.flash('success', 'Successfully posted');
   res.redirect('/items')
+}));
+
+router.post('/:id/edit', catchErrors(async (req, res, next) => {
+  const item = await Item.findById(req.params.id);
+
+  if(!item){
+    req.flash('danger', 'Not exist item');
+    return res.redirect('back');
+  }
+
+  item.title = req.body.title;
+  item.price = req.body.price;
+  item.max_num = req.body.max_num;
+  item.i_info = req.body.i_info;
+  item.c_info = req.body.c_info;
+  item.c_info_length = req.body.c_info.length;
+
+  await item.save();
+  res.redirect('/items');
+
 }));
 
 
