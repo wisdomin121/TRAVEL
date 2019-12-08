@@ -1,3 +1,37 @@
 extends ../layout
 
 block content
+  .container.item-show
+    br
+    .show-title
+      h3.text-center 
+        strong #{item.title}
+
+    p.price #{item.price}원
+    p.max_num 최대인원 : #{item.max_num}
+    p.guide 가이드: #{item.guide.name}
+    p.p_date 등록일자: #{item.p_date}
+
+    hr
+    p.i_info.text-center #{item.i_info}
+    ul
+      each val, index in item.c_info
+        li= (index+1) + '일차: ' + val
+
+    hr
+
+    h5.item-review 
+      strong 고객 리뷰
+
+  nav.navbar.fixed-bottom.navbar-expand-sm
+    button.btn.btn-primary.btn-lg.btn-block.reserve-btn(href="#") 예약하기
+    //- <div class="collapse navbar-collapse" id="navbarCollapse">
+    //-   <ul class="navbar-nav mr-auto">
+    //-     <li class="nav-item active">
+    //-       <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+    //-     </li>
+    //-     <li class="nav-item">
+    //-       <a class="nav-link" href="#">Link</a>
+    //-     </li>
+    //-     <li class="nav-item">
+    //-       <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>

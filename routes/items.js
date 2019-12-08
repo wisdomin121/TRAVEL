@@ -42,6 +42,7 @@ router.post('/', catchErrors(async(req, res, next) => {
   const user = req.session.user; 
 
   var item = new Item({
+    guide: user._id,
     title: req.body.title,
     price: req.body.price,
     max_num: req.body.max_num,

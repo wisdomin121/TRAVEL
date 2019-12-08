@@ -196,7 +196,7 @@ section div .form-control{
   max-height: 40px;
 }
 
-/*상품등록창*/
+/*//items/registration*/
 .registration-title {
   color: #c9e9ff;
 }
@@ -233,6 +233,25 @@ section div .form-control{
 .registration-form .edit{
   float: right;
   margin-right: 10px;
+  background-color: #c9e9ff !important;
+  border-color: transparent !important;
+}
+
+/*/items/index*/
+.custom-select{
+  margin-left: 20px;
+}
+
+.custom-select{
+  width: auto;
+}
+
+/*/items/show*/
+.item-show{
+  max-width: 960px;
+}
+
+.reserve-btn{
   background-color: #c9e9ff !important;
   border-color: transparent !important;
 }
