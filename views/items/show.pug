@@ -12,6 +12,7 @@ block content
     p.guide 가이드: #{item.guide.name}
     p.country 국가: #{item.place[0]}
     p.city 도시: #{item.place[1]}
+    p.d_date-a_date 여행일자: #{moment(item.d_date).format('YYYY-MM-DD')} ~ #{moment(item.a_date).format('YYYY-MM-DD')}
     p.p_date 등록일자: #{moment(item.p_date).format('YYYY-MM-DD HH:mm')}
 
     hr
@@ -29,7 +30,7 @@ block content
     if (!currentUser)
       a.btn.btn-primary.btn-lg.btn-block.reserve-btn(href=`/signin`) 예약하기
     else if (currentUser.group == 1)
-      a.btn.btn-primary.btn-lg.btn-block.reserve-btn(href=`#`) 예약하기
+      a.btn.btn-primary.btn-lg.btn-block.reserve-btn(href=`/reservations/form/${item.id}`) 예약하기
     else
       a.btn.btn-primary.btn-lg.btn-block.registration-edit-btn(href=`/items/${item.id}/edit`) 수정하기
    

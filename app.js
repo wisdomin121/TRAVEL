@@ -12,7 +12,7 @@ var methodOverride = require('method-override');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var items = require('./routes/items');
-// var registrations = require('./routes/registrations');
+var reservations = require('./routes/reservations');
 
 var app = express();
 
@@ -63,7 +63,7 @@ app.use(function(req, res, next) {
 app.use('/', index);
 app.use('/users', users);
 app.use('/items', items);
-// app.use('/registrations', registrations);
+app.use('/reservations', reservations);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

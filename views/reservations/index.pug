@@ -1,0 +1,36 @@
+extends ../layout
+
+block content
+  .container
+    br
+    h4.reservation-title.text-center 
+      strong 예약 내역
+
+    br
+    if reservations.total <= 0
+      .alert.alert-info No reservations
+
+    else
+      - var cnt = 1;
+      - var cur_user =  currentUser._id;
+      each reservation in reservations.docs
+        - var res_user = reservation.user._id;
+        if (cur_user == res_user)
+          .reservations  
+            strong #{cnt}. 
+            a.reservation-item-title(href=`/items/${reservation.item.id}`) 
+              strong #{reservation.item.title} 
+            br
+            .reservation-date-num
+              | 예약일시: #{moment(reservation.res_date).format('YYYY년MM월DD일 HH:MM:SS')}
+              br
+              | 예약인원: #{reservation.res_num}
+              br
+              | 예약가격: #{reservation.res_num * reservation.item.price}원
+              .reservation-btn
+                a.btn.btn-primary.res-btn(href="#") 
+                  strong 수정
+                a.btn.btn-primary.res-btn(href="#")
+                  strong 삭제
+          hr
+          - cnt += 1;

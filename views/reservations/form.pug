@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+  .container
+    br
+    .reservation-form-title.text-center
+      h4 
+        strong 예약 페이지
+
+    div.reservation-form
+      form(action=`/reservations/form/${item.id}`, method='POST')
+        div.form-group
+          label(for='res_num') 예약인원 
+          input.form-control(type='text', id='res_num', name='res_num', required, autofocus)        
+        
+        br
+        div.signin-button
+          button.btn.btn-primary(type="submit") 예약하기

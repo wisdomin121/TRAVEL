@@ -3,11 +3,9 @@
 a {
   color: #00B7FF; }
 
-.flashMessages{
-  background-color: #c9e9ff;
-}
-
-.header nav{
+.flashMessages,
+.header nav,
+.jumbotron{
   background-color: #c9e9ff;
 }
 
@@ -16,28 +14,15 @@ a {
   border-bottom: 1px solid lightgray;
 }
 
-.navbar-brand{
-  color: white;
-}
-
-.nav-link{
-  color: white;
-}
-
-.jumbotron{
-  background-color: #c9e9ff;
-}
-
-.jumbotron-heading{
+.navbar-brand,
+.nav-link,
+.jumbotron-heading,
+.header .down-nav li a{
   color: white;
 }
 
 .header .down-nav li{
   list-style: none;
-}
-
-.header .down-nav li a{
-  color: white;
 }
 
 section div .form-control{
@@ -48,38 +33,9 @@ section div .form-control{
   opacity: 0.7;
 }
 
-.signup-form{
-  border:2px solid #c9e9ff;
-  border-radius: 15px;
-  max-width: 450px;
-  padding: 2%;
-  margin: 0 auto;
-}
-
-.signin-form{
-  border:2px solid #c9e9ff;
-  border-radius: 15px;
-  max-width: 450px;
-  padding: 2%;
-  margin: 0 auto;
-}
-
-.user-page-form{
-  border:2px solid #c9e9ff;
-  border-radius: 15px;
-  max-width: 600px;
-  padding: 2%;
-  margin: 0 auto;
-}
-
-.user-edit-form{
-  border:2px solid #c9e9ff;
-  border-radius: 15px;
-  max-width: 450px;
-  padding: 2%;
-  margin: 0 auto;
-}
-
+.signup-form,
+.signin-form,
+.user-edit-form,
 .user-edit-pwd-form{
   border:2px solid #c9e9ff;
   border-radius: 15px;
@@ -88,6 +44,7 @@ section div .form-control{
   margin: 0 auto;
 }
 
+.user-page-form,
 .signup-guide-form .form-group{
   border:2px solid #c9e9ff;
   border-radius: 15px;
@@ -96,58 +53,52 @@ section div .form-control{
   margin: 0 auto;
 }
 
-.signup-title{
+.registration-form {
+  border:2px solid #c9e9ff;
+  border-radius: 15px;
+  max-width: 1000px;
+  padding: 2%;
+  margin: 0 auto;
+}
+
+.signup-title,
+.signin-title,
+.user-page-title,
+.user-edit-title,
+.user-edit-pwd-title,
+.signup-guide-title,
+.nav-item .dropdown-item,
+.registration-title,
+.user-list-title,
+.reservation-title{
   color: #c9e9ff;
 }
 
-.signin-title{
-  color: #c9e9ff;
-}
-
-.user-page-title{
-  color: #c9e9ff;
-}
-
-.user-edit-title{
-  color: #c9e9ff;
-}
-
-.user-edit-pwd-title{
-  color: #c9e9ff;
-}
-
-.signup-guide-title{
-  color: #c9e9ff;
-}
-
-.signup-form button{
-  background-color: #c9e9ff;
-  border-color: #c9e9ff;
-}
-
-.signin-form button{
-  background-color: #c9e9ff;
-  border-color: #c9e9ff;
-}
-
+.signup-form button,
+.signin-form button,
 .signup-guide-form button{
   background-color: #c9e9ff;
   border-color: #c9e9ff;
 }
 
-.signup-button{
+.signup-button,
+.signin-button,
+.signup-guide-button,
+.user-page-btn{
   margin: 0 auto;
   text-align: center;
 }
 
-.signin-button{
+.reservation-btn{
   margin: 0 auto;
-  text-align: center;
+  text-align: right;
 }
 
-.signup-guide-button{
-  margin: 0 auto;
-  text-align: center;
+.res-btn{
+  margin-left: 10px;
+  background-color: #c9e9ff !important;
+  border-color: transparent !important;
+  color: white !important;
 }
 
 .nav-item img{
@@ -160,27 +111,14 @@ section div .form-control{
   border-color: transparent !important;
 }
 
-.nav-item .dropdown-item{
-  color: #c9e9ff;
-}
-
-.guide-signup{
-  text-align: center;
-  color: #5e5e5e;
-}
-
+.guide-signup,
 .user-page-form .form-group{
-  color: #5e5e5e;
   text-align: center;
+  color: #5e5e5e;
 }
 
 .user-edit-form .form-group{
   color: #5e5e5e;
-}
-
-.user-page-btn{
-  margin: 0 auto;
-  text-align: center;
 }
 
 .user-page-btn .btn-primary{
@@ -197,17 +135,6 @@ section div .form-control{
 }
 
 /*//items/registration*/
-.registration-title {
-  color: #c9e9ff;
-}
-
-.registration-form {
-  border:2px solid #c9e9ff;
-  border-radius: 15px;
-  max-width: 1000px;
-  padding: 2%;
-  margin: 0 auto;
-}
 
 .registration-form .form-group .ta{
   height: 300px !important;
@@ -224,8 +151,6 @@ section div .form-control{
 }
 
 .registration-btn .btn-primary{
-  background-color: #c9e9ff !important;
-  border-color: transparent !important;
   margin-right: 10px;
   max-height: 40px;
 }
@@ -237,7 +162,6 @@ section div .form-control{
   border-color: transparent !important;
 }
 
-/*/items/index*/
 .custom-select{
   margin-left: 20px;
 }
@@ -246,24 +170,23 @@ section div .form-control{
   width: auto;
 }
 
-/*/items/show*/
 .item-show{
   max-width: 960px;
 }
 
 .registration-edit-btn,
-.reserve-btn{
-  background-color: #c9e9ff !important;
-  border-color: transparent !important;
-}
-
-.user-list-title{
-  color: #c9e9ff;
-}
-
+.reserve-btn,
+.registration-btn .btn-primary,
 .list-signup-btn{
   background-color: #c9e9ff !important;
   border-color: transparent !important;
 }
 
+.reservation-item-title{
+  color: #5e5e5e;
+}
+
+.reservation-date-num{
+  text-align: right;
+}
 /*# sourceMappingURL=style.css.map */

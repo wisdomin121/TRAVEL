@@ -15,6 +15,7 @@ var schema = new Schema({
   d_date: {type: Date, required: true},
   a_date: {type: Date, required: true},
   p_date: {type: Date, default: Date.now},
+  now_num: {type: Number, default: 0},
   c_info_length: {type: Number}
 }, { 
   toJSON: { virtuals: true},
