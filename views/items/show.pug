@@ -10,7 +10,9 @@ block content
     p.price #{item.price}원
     p.max_num 최대인원 : #{item.max_num}
     p.guide 가이드: #{item.guide.name}
-    p.p_date 등록일자: #{item.p_date}
+    p.country 국가: #{item.place[0]}
+    p.city 도시: #{item.place[1]}
+    p.p_date 등록일자: #{moment(item.p_date).format('YYYY-MM-DD HH:mm')}
 
     hr
     p.i_info.text-center #{item.i_info}
@@ -24,8 +26,10 @@ block content
       strong 고객 리뷰
 
   nav.navbar.fixed-bottom.navbar-expand-sm
-    if(item.guide.group == 1)
-      a.btn.btn-primary.btn-lg.btn-block.reserve-btn(href="#") 예약하기
+    if (!currentUser)
+      a.btn.btn-primary.btn-lg.btn-block.reserve-btn(href=`/signin`) 예약하기
+    else if (currentUser.group == 1)
+      a.btn.btn-primary.btn-lg.btn-block.reserve-btn(href=`#`) 예약하기
     else
       a.btn.btn-primary.btn-lg.btn-block.registration-edit-btn(href=`/items/${item.id}/edit`) 수정하기
    

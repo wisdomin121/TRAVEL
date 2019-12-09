@@ -257,4 +257,13 @@ section div .form-control{
   border-color: transparent !important;
 }
 
+.user-list-title{
+  color: #c9e9ff;
+}
+
+.list-signup-btn{
+  background-color: #c9e9ff !important;
+  border-color: transparent !important;
+}
+
 /*# sourceMappingURL=style.css.map */

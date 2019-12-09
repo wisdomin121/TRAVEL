@@ -1,4 +1,5 @@
 var mongoose = require('mongoose'),
+    mongoosePaginate = require('mongoose-paginate'),
     Schema = mongoose.Schema;
 
 var schema = new Schema({
@@ -13,6 +14,7 @@ var schema = new Schema({
   toObject: {virtuals: true}
 });
 
+schema.plugin(mongoosePaginate);
 var User = mongoose.model('User', schema);
 
 module.exports = User;

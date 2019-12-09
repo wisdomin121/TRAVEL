@@ -7,6 +7,7 @@ var schema = new Schema({
   title: {type: String, trim: true, required: true},
   price: {type: Number, required: true},
   max_num: {type: Number, required: true},
+  place: [String],
   i_info: {type: String, trim: true, required: true},
   c_info: [{type: String, trim: true, required: true}],
   special: {type: String, required: false},

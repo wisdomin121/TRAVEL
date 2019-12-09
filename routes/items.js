@@ -1,5 +1,5 @@
 var express = require('express');
-    Item = require('../models/item')
+    Item = require('../models/item');
 var router = express.Router();
 const catchErrors = require('../lib/async-error');
 
@@ -62,6 +62,7 @@ router.post('/', catchErrors(async(req, res, next) => {
     title: req.body.title,
     price: req.body.price,
     max_num: req.body.max_num,
+    place: req.body.place.split(">").map(e => e.trim()),
     i_info: req.body.i_info,
     c_info: req.body.c_info,
     d_date: req.body.d_date,

@@ -3,6 +3,15 @@ var express = require('express');
 var router = express.Router();
 const catchErrors = require('../lib/async-error');
 
+function needAuth(req, res, next) {
+  if (req.session.user) {
+    next();
+  } else {
+    req.flash('danger', 'Please signin first.');
+    res.redirect('/signin');
+  }
+}
+
 function validateForm(form, options) {
   var id = form.id || "";
   var name = form.name || "";
@@ -31,6 +40,15 @@ function validateForm(form, options) {
 /* GET users listing. */
 router.get('/new', function(req, res, next) {
   res.render('users/new');
+});
+
+router.get('/list', needAuth, (req, res, next) => {
+  User.find({}, function(err, users) {
+    if (err) {
+      return next(err);
+    }
+    res.render('users/list', {users: users});
+  });
 });
 
 router.get('/:id/edit', function(req, res, next){
@@ -80,6 +98,15 @@ router.delete('/:id', function(req, res, next){
       return next(err);
     }
     res.redirect('/');
+  });
+});
+
+router.delete('/list/:id', needAuth, (req, res, next) => {
+  User.findOneAndRemove({_id: req.params.id}, function(err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect('/users/list');
   });
 });
 

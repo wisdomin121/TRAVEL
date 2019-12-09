@@ -1,0 +1,31 @@
+extends ../layout
+
+block content
+  .container
+    br
+    .user-list-title.text-center
+      h4 
+        strong 사용자 관리 
+    br
+    table.table.table-hover
+      thead
+        tr
+          th 이름
+          th 아이디
+          th 그룹
+          th 생성일자
+      tbody
+        each user in users
+          tr
+            td= user.name
+            td= user.id
+            td= user.group
+            td= moment(user.createdAt).format('YYYY-MM-DD HH:mm:ss')
+            td
+              a.btn.btn-sm.btn-outline-secondary(href=`/users/${user._id}/edit`) 
+                | #[i.fa.fa-pencil] Edit            
+              a.btn.btn-sm.btn-outline-danger(href=`/users/list/${user._id}?_method=DELETE`)
+                | #[i.fa.fa-trash] Delete
+    a.btn.btn-primary.list-signup-btn(href='/users/new') #[i.fa.fa-plus] 
+      strong Register a new user
+
