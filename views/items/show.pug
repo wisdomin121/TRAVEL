@@ -6,9 +6,9 @@ block content
     .show-title
       h3.text-center 
         strong #{item.title}
-
-    p.price #{item.price}원
-    p.max_num 최대인원 : #{item.max_num}
+    hr
+    p.price 가격: 1인당 #{item.price}원
+    p.max_num 최대인원 : #{item.max_num}명
     p.guide 가이드: #{item.guide.name}
     p.country 국가: #{item.place[0]}
     p.city 도시: #{item.place[1]}
@@ -16,10 +16,15 @@ block content
     p.p_date 등록일자: #{moment(item.p_date).format('YYYY-MM-DD HH:mm')}
 
     hr
+    p.text-center
+      strong 상품 소개
     p.i_info.text-center #{item.i_info}
     ul
+      p.text-center
+        strong 코스 소개
       each val, index in item.c_info
         li= (index+1) + '일차: ' + val
+        br
 
     hr
 
