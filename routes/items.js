@@ -33,7 +33,7 @@ router.get('/registration', function(req, res, next){
 });
 
 router.get('/:id', catchErrors(async (req, res, next) => {
-  const item = await Item.findById(req.params.id);
+  const item = await Item.findById(req.params.id).populate('guide');
   item.view++;    // TODO: 동일한 사람이 본 경우에 Read가 증가하지 않도록???
   await item.save();
   res.render('items/show', {item: item});
