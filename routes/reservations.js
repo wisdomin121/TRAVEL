@@ -22,15 +22,13 @@ router.get('/', catchErrors(async(req, res, next) => {
   const term = req.query.term;
   if(term){
     query={$or: [
-      //{title: {'$regex': item.title, '$options': 'i'}},
       {res_num: {'$regex': term, '$options': 'i'}},
       {res_date: {'$regex': term, '$options': 'i'}}
     ]};
   }
   const reservations = await Reservation.paginate(query, {
-    sort: {p_date: -1},
-    populate: 'user',
-    populate: 'item',
+    sort: {p_date: 1},
+    populate: ['user', 'item'], 
     page: page, limit: limit
   });
   res.render('reservations/index', {reservations: reservations, query: req.query});

@@ -25,9 +25,17 @@ a {
   list-style: none;
 }
 
-section div .form-control{
+.search-input-group .form-control{
   color: #5e5e5e;
-  width: 50%;
+  width: 500px;
+  text-align: center;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.top .form-control{
+  color: #5e5e5e;
+  width: auto;
   text-align: center;
   font-size: 0.9rem;
   opacity: 0.7;
@@ -53,7 +61,8 @@ section div .form-control{
   margin: 0 auto;
 }
 
-.registration-form {
+.registration-form,
+.guide-blog-form{
   border:2px solid #c9e9ff;
   border-radius: 15px;
   max-width: 1000px;
@@ -70,7 +79,8 @@ section div .form-control{
 .nav-item .dropdown-item,
 .registration-title,
 .user-list-title,
-.reservation-title{
+.reservation-title,
+.guide-blog-title{
   color: #c9e9ff;
 }
 
@@ -112,7 +122,8 @@ section div .form-control{
 }
 
 .guide-signup,
-.user-page-form .form-group{
+.user-page-form .form-group,
+.guide-blog-form .form-group{
   text-align: center;
   color: #5e5e5e;
 }

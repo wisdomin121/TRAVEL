@@ -1,13 +1,57 @@
 var express = require('express');
-  User = require('../models/user');
+    User = require('../models/user');
 var router = express.Router();
+const catchErrors = require('../lib/async-error');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.get('/search', catchErrors(async (req, res, next) => {
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 10;
 
-router.get('/signin', function(req, res, next) {
+  var query = {};
+  const term = req.query.term;
+  if (term) {
+    query = {$or: [
+      {title: {'$regex': term, '$options': 'i'}},
+      {place: {'$regex': term, '$options': 'i'}},
+      {i_info: {'$regex': term, '$options': 'i'}},
+      {c_info: {'$regex': term, '$options': 'i'}}
+    ]};
+  }
+  const items = await Item.paginate(query, {
+    sort: {createdAt: -1}, 
+    page: page, limit: limit
+  });
+  res.render('items/index', {items: items, query: req.query});
+}));
+
+router.get('/', catchErrors(async(req, res, next) => {
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 10;
+
+  var query={};
+  const term = req.query.term;
+  
+  if(term){
+    query={$or: [
+      {title: {'$regex': term, '$options': 'i'}},
+      {price: {'$regex': term, '$options': 'i'}},
+      {max_num: {'$regex': term, '$options': 'i'}},
+      {view: {'$regex': term, '$options': 'i'}},
+      {i_info: {'$regex': term, '$options': 'i'}},
+      {c_info: {'$regex': term, '$options': 'i'}},
+      {d_date: {'$regex': term, '$options': 'i'}},
+      {a_date: {'$regex': term, '$options': 'i'}}
+    ]};
+  }
+  const items = await Item.paginate(query, {
+    sort: {view: -1},
+    page: page, limit: limit
+  });
+  res.render('index', {items: items, query: req.query});
+}));
+
+router.get('/signin', function(req, res, next)  {
   res.render('signin');
 });
 

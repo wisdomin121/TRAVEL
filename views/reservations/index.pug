@@ -11,11 +11,60 @@ block content
       .alert.alert-info No reservations
 
     else
-      - var cnt = 1;
-      - var cur_user =  currentUser._id;
-      each reservation in reservations.docs
-        - var res_user = reservation.user._id;
-        if (cur_user == res_user)
+      if(currentUser.group == 1)
+        - var cnt = 1;
+        - var cur_user =  currentUser._id;
+        each reservation in reservations.docs
+          - var res_user = reservation.user._id;
+          if (cur_user == res_user)
+            .reservations  
+              strong #{cnt}. 
+              a.reservation-item-title(href=`/items/${reservation.item.id}`) 
+                strong #{reservation.item.title} 
+              br
+              .reservation-date-num
+                | 예약일시: #{moment(reservation.res_date).format('YYYY년MM월DD일 HH:MM:SS')}
+                br
+                | 예약인원: #{reservation.res_num}
+                br
+                | 예약가격: #{reservation.res_num * reservation.item.price}원
+                .reservation-btn
+                  a.btn.btn-primary.res-btn(href="#") 
+                    strong 수정
+                  a.btn.btn-primary.res-btn(href="#")
+                    strong 삭제
+            hr
+            - cnt += 1;
+      else if (currentUser.group == 2)
+        - var cnt = 1;
+        - var cur_user =  currentUser._id;
+        each reservation in reservations.docs
+          - var res_guide = reservation.item.guide._id;
+          if (cur_user == res_guide)
+            .reservations  
+              strong #{cnt}. 
+              a.reservation-item-title(href=`/items/${reservation.item.id}`) 
+                strong #{reservation.item.title} 
+              br
+              .reservation-date-num
+                | 예약일시: #{moment(reservation.res_date).format('YYYY년MM월DD일 HH:MM:SS')}
+                br
+                | 예약자: #{reservation.user.name}
+                br
+                | 예약인원: #{reservation.res_num}
+                br
+                | 예약가격: #{reservation.res_num * reservation.item.price}원
+                .reservation-btn
+                  a.btn.btn-primary.res-btn(href="#") 
+                    strong 수정
+                  a.btn.btn-primary.res-btn(href="#")
+                    strong 삭제
+            hr
+            - cnt += 1;
+
+      else if (currentUser.group == 0) 
+        - var cnt = 1;
+        each reservation in reservations.docs  
           .reservations  
             strong #{cnt}. 
             a.reservation-item-title(href=`/items/${reservation.item.id}`) 
@@ -24,6 +73,8 @@ block content
             .reservation-date-num
               | 예약일시: #{moment(reservation.res_date).format('YYYY년MM월DD일 HH:MM:SS')}
               br
+              | 예약자: #{reservation.user.name}
+              br
               | 예약인원: #{reservation.res_num}
               br
               | 예약가격: #{reservation.res_num * reservation.item.price}원
@@ -31,6 +82,9 @@ block content
                 a.btn.btn-primary.res-btn(href="#") 
                   strong 수정
                 a.btn.btn-primary.res-btn(href="#")
-                  strong 삭제
-          hr
-          - cnt += 1;
+                  strong 삭제 
+          hr    
+            
+          - cnt += 1;      
+
+      

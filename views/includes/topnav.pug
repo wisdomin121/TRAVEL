@@ -3,6 +3,8 @@
     .container
       a.navbar-brand(href="/") 
         strong FLY UP
+      form.form-inline.search-input-group.top(action='/search', method='GET')
+        input.form-control(type='text', name='term', placeholder='검색', aria-label='Search', value=term)
       button.navbar-toggler(type="button", data-toggle="collapse", data-target="#navbarsExampleDefault", aria-controls="navbarsExampleDefault", aria-expanded="false", aria-label="Toggle navigation")
         span.navbar-toggler-icon
 
@@ -19,6 +21,9 @@
             li.nav-item
               a.nav-link(href="/users/list")
                 strong 사용자 목록
+            li.nav-item
+              a.nav-link(href="/reservations") 
+                strong 예약 내역
             li.nav-item
               div.btn-group
                 button.btn.btn-secondary(data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")

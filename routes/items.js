@@ -22,7 +22,7 @@ router.get('/', catchErrors(async(req, res, next) => {
     ]};
   }
   const items = await Item.paginate(query, {
-    sort: {p_date: -1},
+    sort: {p_date: 1},
     page: page, limit: limit
   });
   res.render('items/index', {items: items, query: req.query});
