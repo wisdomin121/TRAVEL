@@ -4,9 +4,9 @@ block content
   br
   div.selectbox
     select.custom-select(onchange="window.open(value, '_self');")
-      option.selected(value="/items") 인기순
+      option.selected(value="/items/new") 신상품순
+      option(value="/items") 인기순
       option(value="/items/price") 가격순
-      option(value="/items/new") 신상품순
 
   br
   br
@@ -15,7 +15,7 @@ block content
   else
     .items
       .container
-        .row.row-cols-1.row-cols-md-3
+        .row.row-cols-1.row-cols-md-3 
           each item in items.docs
             .col.mb-4
               .card
@@ -26,4 +26,3 @@ block content
                     .price
                       |가격 : #{item.price}
                     small.text-muted 조회수: #{item.view}
-

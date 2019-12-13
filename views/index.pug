@@ -13,17 +13,22 @@ block content
   div.album.py-5
     h4.recommend-item
       strong 추천상품 
-    div.container
+    hr
+    div.container.recommend-item-form
       .items
         .container
           .row.row-cols-1.row-cols-md-2  
+            - var cnt = 0;
             each item in items.docs
+              if(cnt == 4)
+                - break
               .col.mb-4
                 .card
-                  img.card-img-top(src="#")
                   .card-body
-                    a.card-text.item_title(href=`/items/${item.id}`)= item.title 
+                    a.card-text.item_title(href=`/items/${item.id}`)= item.title
+                    hr
                     .d-flex.justify-content-between.align-items-center
                       .price
                         |가격 : #{item.price}
                       small.text-muted 조회수: #{item.view}
+              - cnt += 1;

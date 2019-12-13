@@ -200,4 +200,13 @@ a {
 .reservation-date-num{
   text-align: right;
 }
+
+.recommend-item{
+  margin-left: 20px;
+  color: #c9e9ff;
+}
+
+.card{
+  min-width: 200px;
+}
 /*# sourceMappingURL=style.css.map */
