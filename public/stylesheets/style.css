@@ -9,6 +9,10 @@ a {
   background-color: #c9e9ff;
 }
 
+.jumbotron{
+  margin-bottom: 0rem;
+}
+
 .header .down-nav{
   background-color: #c9e9ff;
   border-bottom: 1px solid lightgray;

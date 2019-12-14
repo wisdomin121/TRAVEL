@@ -29,7 +29,7 @@ block content
                 br
                 | 예약가격: #{reservation.res_num * reservation.item.price}원
                 .reservation-btn
-                  a.btn.btn-primary.res-btn(href="#")
+                  a.btn.btn-primary.res-btn(href=`/reservations/cancel/${reservation._id}?_method=DELETE`)
                     strong 취소
             hr
             - cnt += 1;
@@ -53,9 +53,9 @@ block content
                 br
                 | 예약가격: #{reservation.res_num * reservation.item.price}원
                 .reservation-btn
-                  a.btn.btn-primary.res-btn(href="#") 
+                  a.btn.btn-primary.res-btn(href=`/reservations/edit/${reservation._id}`) 
                     strong 수정
-                  a.btn.btn-primary.res-btn(href="#")
+                  a.btn.btn-primary.res-btn(href=`/reservations/cancel/${reservation._id}?_method=DELETE`)
                     strong 취소
             hr
             - cnt += 1;
@@ -77,9 +77,9 @@ block content
               br
               | 예약가격: #{reservation.res_num * reservation.item.price}원
               .reservation-btn
-                a.btn.btn-primary.res-btn(href="#") 
+                a.btn.btn-primary.res-btn(href=`/reservations/edit/${reservation._id}`) 
                   strong 수정
-                a.btn.btn-primary.res-btn(href="#")
+                a.btn.btn-primary.res-btn(href=`/reservations/cancel/${reservation._id}?_method=DELETE`)
                   strong 취소
           hr    
             

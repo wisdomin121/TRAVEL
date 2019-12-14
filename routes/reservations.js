@@ -34,6 +34,28 @@ router.get('/', catchErrors(async(req, res, next) => {
   res.render('reservations/index', {reservations: reservations, query: req.query});
 }));
 
+router.get('/edit/:id', catchErrors(async (req, res, next) =>{
+  const reservation = await Reservation.findById(req.params.id).populate('item');
+  await reservation.save();
+  res.render('reservations/edit', {reservation: reservation});
+}));
+
+router.delete('/cancel/:id', catchErrors(async (req, res, next) =>{
+  const reservation = await Reservation.findById(req.params.id).populate('item');
+  const item = await Item.findById(reservation.item);
+
+  item.now_num = parseInt(item.now_num) - parseInt(reservation.res_num);
+  Reservation.findOneAndRemove({_id:req.params.id}, function(err) {
+    if (err) {
+      return next(err);
+    }
+  });
+
+  await reservation.save();
+  await item.save();
+  res.redirect('/');
+}));
+
 router.post('/form/:id', catchErrors(async(req, res, next) => {
   const user = req.session.user; 
   const item = await Item.findById(req.params.id);
@@ -53,6 +75,26 @@ router.post('/form/:id', catchErrors(async(req, res, next) => {
   if(item.now_num > item.max_num){
     req.flash('danger', "인원 수가 다 찼습니다.");
     return res.redirect('/items');
+  }else{
+    await reservation.save();
+    await item.save();
+
+    res.redirect('/');
+  }
+}));
+
+router.post('/edit/:id', catchErrors(async(req, res, next) => {
+  const reservation = await Reservation.findById(req.params.id).populate('item');
+  const item = await Item.findById(reservation.item);
+
+  item.now_num = parseInt(item.now_num) - parseInt(reservation.res_num);
+
+  reservation.res_num = req.body.res_num;
+  item.now_num = parseInt(req.body.res_num) + parseInt(item.now_num);
+
+  if(item.now_num > item.max_num){
+    req.flash('danger', "인원 수가 다 찼습니다.");
+    return res.redirect('/reservations');
   }else{
     await reservation.save();
     await item.save();

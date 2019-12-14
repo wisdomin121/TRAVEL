@@ -23,9 +23,9 @@ block content
             td= moment(user.createdAt).format('YYYY-MM-DD HH:mm:ss')
             td
               a.btn.btn-sm.btn-outline-secondary(href=`/users/${user._id}/edit`) 
-                | #[i.fa.fa-pencil] Edit            
+                | #[i.fa.fa-pencil] 수정          
               a.btn.btn-sm.btn-outline-danger(href=`/users/list/${user._id}?_method=DELETE`)
-                | #[i.fa.fa-trash] Delete
+                | #[i.fa.fa-trash] 삭제
     a.btn.btn-primary.list-signup-btn(href='/users/new') #[i.fa.fa-plus] 
-      strong Register a new user
+      strong 사용자 추가하기
 
