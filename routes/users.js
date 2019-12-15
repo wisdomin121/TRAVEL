@@ -92,13 +92,13 @@ router.get('/:id', (req, res, next) => {
 });
 
 router.delete('/:id', function(req, res, next){
-  delete req.session.user;
-  User.findOneAndRemove({id: req.params.id}, function(err) {
+  User.findOneAndRemove({_id: req.params.id}, function(err) {
     if (err) {
       return next(err);
     }
-    res.redirect('/');
   });
+  delete req.session.user;
+  res.redirect('/');
 });
 
 router.delete('/list/:id', needAuth, (req, res, next) => {
