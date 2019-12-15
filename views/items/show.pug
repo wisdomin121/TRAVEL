@@ -7,13 +7,17 @@ block content
       h3.text-center 
         strong #{item.title}
     hr
-    p.price 가격: 1인당 #{item.price}원
-    p.max_num 최대인원 : #{item.max_num}명
-    p.guide 가이드: #{item.guide.name}
-    p.country 국가: #{item.place[0]}
-    p.city 도시: #{item.place[1]}
-    p.d_date-a_date 여행일자: #{moment(item.d_date).format('YYYY-MM-DD')} ~ #{moment(item.a_date).format('YYYY-MM-DD')}
-    p.p_date 등록일자: #{moment(item.p_date).format('YYYY-MM-DD HH:mm')}
+
+    table.item-information
+      tr 
+        td 가격: 1인당 #{item.price}원
+        td 최대인원 : #{item.now_num}/#{item.max_num}명 
+      tr
+        td  여행일자: #{moment(item.d_date).format('YYYY-MM-DD')} ~ #{moment(item.a_date).format('YYYY-MM-DD')} &nbsp; &nbsp; &nbsp;
+        td 여행지: #{item.place[0]} &gt; #{item.place[1]}
+      tr
+        td 등록일자: #{moment(item.p_date).format('YYYY-MM-DD HH:mm')} 
+        td 가이드: #{item.guide.name} 
 
     hr
     p.text-center
